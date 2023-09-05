@@ -22,12 +22,10 @@ function registrarUsuario(){
     fetch('https://reqres.in/api/users',{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        body: {
-            "first_name": document.getElementById('nombre1'),
-            "last_name": document.getElementById('nombre2')
-        }
-    }).then((response)=>{console.log(response)})
-
+    }).then(response=>{
+        window.alert(`El codigo de estado es: ${response.status}`)
+    })
+   
 }
 
 

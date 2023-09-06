@@ -10,12 +10,22 @@ fetch('https://reqres.in/api/users?page=2')
                 <td>${element.email}</td>
                 <td>${element.last_name}</td>
                 <td ><img src="${element.avatar}" alt="" width=""></td>
-                <td><button type="button" onclick="verUsuario(${element.id})"
+                <td>
+                <button type="button" onclick="verUsuario(${element.id})"
                 class="btn btn-primary btn-info" data-bs-toggle="modal" data-bs-target="#modalVer">
-                Ver
-              </button>
-                <button type="submit" class="btn btn-light">actualizar</button>
-                <button type="submit" class="btn btn-info">borrar</button>
+                Details
+                </button>
+                
+                <button type="button" onclick="actualizarUsuario(${element.id})"
+                class="btn btn-primary btn-warning">
+                Update
+                </button>
+
+                <button type="button" onclick="borrarUsuario(${element.id})"
+                class="btn btn-primary btn-danger">
+                Delete
+                </button>
+
                 </td>
                 `;
             }) 
@@ -25,7 +35,23 @@ fetch('https://reqres.in/api/users?page=2')
     console.log("Error al consultar", error)
 })
 
+function registrarUsuario(){
+    fetch('https://reqres.in/api/users',{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'method': 'POST'
+    }).then(response=>{
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `El codigo de estado es:  ${response.status}`,
+            showConfirmButton: false,
+            timer: 1700
+          })
 
+    })
+   
+}
 
 function verUsuario(id) {
     let datosIndividules = document.getElementById("cardsita");
@@ -39,28 +65,50 @@ function verUsuario(id) {
                 datosIndividules.innerHTML += `
                     <img src="${payload.data.avatar}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">${payload.data.first_name}</h5>
-                        <p class="">${payload.data.email}</p>
+                        <h5 class="card-title">Nombre: ${payload.data.first_name}</h5>
+                        <p class="">Email: ${payload.data.email}</p>
                     </div>`;
             });
         });
 }
 
-
-
-function registrarUsuario(){
-    fetch('https://reqres.in/api/users',{
+function actualizarUsuario(id) {
+    fetch(`https://reqres.in/api/users/${id}`,{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-    }).then(response=>{
-        window.alert(`El codigo de estado es: ${response.status}`)
+        'method': 'PUT'
     })
-   
+    .then((response)=>{
+        response.json().then((payload)=>{
+            const createdAt = payload.updatedAt;
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: `Actualizado correctamente en la fecha: ${createdAt}
+                 con estado:  ${response.status}`,
+                showConfirmButton: false,
+                timer: 1700
+              })
+        })
+        
+
+    })
 }
 
 
-
-
-
-
-
+function borrarUsuario(id) {
+    fetch(`https://reqres.in/api/users/${id}`,{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'method': 'DELETE'
+    })
+    .then((response)=>{
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `Eliminado correctamente con estatus ${response.status}`,
+            showConfirmButton: false,
+            timer: 1700
+        })
+    })
+}

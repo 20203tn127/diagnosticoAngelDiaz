@@ -13,58 +13,111 @@
 
     <div class="container">
 
-     <div>
-      <h1 style="text-align: center;">Registra un usario API</h1>
-     </div>
-
-     <form>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+      <div>
+        <h1 style="text-align: center;">Registra un usario API</h1>
       </div>
 
-      <div class="mb-3">
-        <label for="firsNameInput" class="form-label">FirstName</label>
-        <input type="text" class="form-control" id="nombre1" aria-describedby="emailHelp">
+      <br>
+
+      <div>
+        <button type="button" class="btn btn-primary btn-dark my-3" data-bs-toggle="modal" data-bs-target="#modalsito">
+          Registra un usuario
+        </button>
+
       </div>
 
-      <div class="mb-3">
-        <label for="lastNameInput" class="form-label">LasTname</label>
-        <input type="text" class="form-control" id="nombre2" aria-describedby="emailHelp">
+      <div>
+        <table class="table table-striped table-dark" id="tablita">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">FirstName</th>
+              <th scope="col">Email</th>
+              <th scope="col">lastName</th>
+              <th scope="col">Avatar</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+        </table>
       </div>
-
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">AVATAR uri</label>
-        <input type="text" class="form-control" id="avatarURI" aria-describedby="emailHelp">
-      </div>
-
-      <button type="submit" onclick="registrarUsuario()" class="btn btn-primary">Submit</button>
-    </form>
-
-    <br>
-
-      <table class="table table-striped" id="tablita">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">FirstName</th>
-            <th scope="col">Email</th>
-            <th scope="col">lastName</th>
-            <th scope="col">Avatar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-      </table>
-
-
+      
     </div>
+
+
+    <div class="modal" tabindex="-1" id="modalsito">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Registra un usuario :D</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+              </div>
+        
+              <div class="mb-3">
+                <label for="firsNameInput" class="form-label">FirstName</label>
+                <input type="text" class="form-control" id="nombre1" aria-describedby="emailHelp">
+              </div>
+        
+              <div class="mb-3">
+                <label for="lastNameInput" class="form-label">LasTname</label>
+                <input type="text" class="form-control" id="nombre2" aria-describedby="emailHelp">
+              </div>
+        
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">AVATAR uri</label>
+                <input type="text" class="form-control" id="avatarURI" aria-describedby="emailHelp">
+              </div>
+            
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" onclick="registrarUsuario()" class="btn btn-primary">Save changes</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div> 
+    
+    
+
+<!-- Modal -->
+<div class="modal fade bg-black" id="modalVer" tabindex="-1" aria-labelledby="modalVer" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Detalles del registro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="card" id="cardsita" style="width: 18rem;">
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
   
   </body>
+
+
+
+  
 </html>
